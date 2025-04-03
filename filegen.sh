@@ -11,7 +11,7 @@ directories=("$HOME/files" "$HOME/files2" "$HOME/templogs")
 
 
 # A for loop to iterate through the directories array
-# and see if the folder exists. If not, create the folder.
+# and see if the folder exists then create it if not.
 for dir in "${directories[@]}"; do
     if [ ! -d "$dir" ]; then
         mkdir "$dir"
@@ -35,13 +35,23 @@ counter=0
 # A while loop that will move the files from /files to /files2 and back
 # 100 times, while redirecting the stdout and stderr streams to files.
 while [ $counter -lt 100 ]; do
-    mv -v "$HOME/files/*" "$HOME/files2/" 1>>"$HOME/templogs/stdout.log" 2>>"$HOME/templogs/stderr.log"
-    mv -v "$HOME/files2/*" "$HOME/files/" 1>>"$HOME/templogs/stdout.log" 2>>"$HOME/templogs/stderr.log"
-    cp -v "$HOME/temp/anyfile.txt" "$HOME/files" 1>>"$HOME/templogs/stdout.log" 2>>"$HOME/templogs/stderr.log"
+
+    # Find only files in /files or /files2 and move them verbosely 
+    # to the opposite folder.
+    find ~/files/ -type f -print0 | xargs -0 mv -vt ~/files2  1>>~/templogs/stdout.log 2>>~/templogs/stderr.log
+    find ~/files2/ -type f -print0 | xargs -0 mv -vt ~/files  1>>~/templogs/stdout.log 2>>~/templogs/stderr.log
+    
+    # Copy Non-existent files verbosely to generate stderr output.  
+    # There shouldn't be any stdout output.  
+    cp -v "$HOME/temp$counter/anyfile$counter.txt" "$HOME/files" 1>>~/templogs/stdout.log 2>>~/templogs/stderr.log
+
+    # Increment the counter variable by 1, so the while condition 
+    # eventually evaluates to false.
     counter=$((counter+1))
 done
 
-# List contents of the files folder to ensure files are back where
-# they belong, and redirect stdout and stderr streams to files.
-ls -lh "$HOME/files" 1>>"$HOME/templogs/files_output.txt" 2>>"$HOME/templogs/files_output_errors.log"
+# List contents of the files folder with human readable file sizes 
+# to ensure files are back where they belong, and redirect stdout
+# and stderr streams to files.
+ls -lh ~/files 1>>~/templogs/files_output.txt 2>>~/templogs/files_output_errors.log
 

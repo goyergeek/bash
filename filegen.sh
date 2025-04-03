@@ -35,8 +35,8 @@ counter=0
 # A while loop that will move the files from /files to /files2 and back
 # 100 times, while redirecting the stdout and stderr streams to files.
 while [ $counter -lt 100 ]; do
-    mv -v "$HOME/files/*" "$HOME/files2" 1>>"$HOME/templogs/stdout.log" 2>>"$HOME/templogs/stderr.log"
-    mv -v "$HOME/files2/*" "$HOME/files" 1>>"$HOME/templogs/stdout.log" 2>>"$HOME/templogs/stderr.log"
+    mv -v "$HOME/files/*" "$HOME/files2/" 1>>"$HOME/templogs/stdout.log" 2>>"$HOME/templogs/stderr.log"
+    mv -v "$HOME/files2/*" "$HOME/files/" 1>>"$HOME/templogs/stdout.log" 2>>"$HOME/templogs/stderr.log"
     cp -v "$HOME/temp/anyfile.txt" "$HOME/files" 1>>"$HOME/templogs/stdout.log" 2>>"$HOME/templogs/stderr.log"
     counter=$((counter+1))
 done

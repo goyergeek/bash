@@ -2,11 +2,14 @@
 
 # This script will check for and create a directory structure
 # in the current users home folder, then generate 1,000 files 
-# within the ~/files folder.  
+# within the ~/files folder.  After this, it will move those
+# files back and forth several times between to directories
+# while redirecting stdout and stderr streams to files in 
+# ~/templogs/stdout.log and ~/templogs/stderr.log
 
 
-# Instantiate a variable called directories and populate it
-# with an array of folder locations.
+# Instantiate an indexed array called directories and populate it
+# directories.
 directories=("$HOME/files" "$HOME/files2" "$HOME/templogs")
 
 
@@ -25,7 +28,6 @@ for i in {1..1000}; do
     filedate=$(date +"%m%d%Y")
     touch "$HOME/files/${filedate}_file#_$i.txt"
 done
-
 
 # Instantiate a variable called counter and set it to zero.  This
 # will be used to count the number of loop iterations in the while

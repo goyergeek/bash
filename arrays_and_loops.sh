@@ -3,9 +3,9 @@
 
 
 # Loops are a powerful tool in scripting and programing.
-# This script file will cover the basic for and while
-# loops, and describe some of the data structures (types)
-# you commonly work with when using them.
+# This script file will cover the basic for, while, and 
+# until loops, then describe some of the data structures 
+# (types) you commonly work with when using them.
 
 
 #################################################################################
@@ -143,6 +143,7 @@ for index in "${!my_indexed_array[@]}"; do
     echo "Index: $index, Value: ${my_indexed_array[$index]}"
 done
 
+echo ;
 # Associative Array with For Loops
 
 # Declare Associative Array, then Populate it with key/value pairs.
@@ -151,14 +152,17 @@ my_associative_array=(["FirstName"]="John" ["LastName"]="Doe" ["Age"]=55 ["Avera
 
 # Display number of items in associative array, then all keys, all values, then key/value pairs.
 echo "Number of key/value pairs in my_associative_array: ${#my_associative_array[@]}"
+echo ;
 echo "Keys for my_associative_array:" 
 for key in "${!my_associative_array[@]}"; do
     echo "$key"
 done
+echo ;
 echo "Values for my_associative_array:"
 for value in "${my_associative_array[@]}"; do
     echo "$value"
 done
+echo ;
 echo "Key Value Pairs from For Loop:"
 for key in "${!my_associative_array[@]}"; do
     echo "Key: $key  |  Value: ${my_associative_array[$key]}"

@@ -167,3 +167,17 @@ echo "Key Value Pairs from For Loop:"
 for key in "${!my_associative_array[@]}"; do
     echo "Key: $key  |  Value: ${my_associative_array[$key]}"
 done
+
+# Indexed Arrays with While and Until Loops
+idxcounter=0
+while [ $idxcounter -le ${#my_indexed_array[@]}-1 ]; do
+    echo "Index: $idxcounter, Value: ${my_indexed_array[$idxcounter]}"
+    idxcounter=$((idxcounter+1))
+done
+
+until [ $idxcounter -ge ${#my_indexed_array[@]}-1 ]; do
+    echo "Index: $idxcounter, Value: ${my_indexed_array[$idxcounter]}"
+    
+done
+
+# Associative Arrays with While and Until Loops

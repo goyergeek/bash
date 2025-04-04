@@ -125,3 +125,41 @@
 #   for key in "${!associative_array_name[@]}"; do
 #       echo "Key: $key, Value: ${associative_array_name[$key]}"
 #   done
+#
+#################################################################################
+
+# Indexed Array with For Loops
+
+# Declare Indexed Array and populate it with items.
+my_indexed_array=("One" "Two" "Three" "Four")
+
+# Display the number of items in the array, then the value at index 2 and 0, finally Index/Value pairs.
+echo "Number of indicies in my_indexed_array: ${#my_indexed_array[@]}"
+echo "Value at Index 2 of my_indexed_array: ${my_indexed_array[2]}"
+echo "Value at Index 0 of my_indexed_array: ${my_indexed_array[0]}"
+echo ;
+echo "For Loop Output of my_indexed_array indicies and values:  "
+for index in "${!my_indexed_array[@]}"; do
+    echo "Index: $index, Value: ${my_indexed_array[$index]}"
+done
+
+# Associative Array with For Loops
+
+# Declare Associative Array, then Populate it with key/value pairs.
+declare -A my_associative_array
+my_associative_array=(["FirstName"]="John" ["LastName"]="Doe" ["Age"]=55 ["Average"]=95)
+
+# Display number of items in associative array, then all keys, all values, then key/value pairs.
+echo "Number of key/value pairs in my_associative_array: ${#my_associative_array[@]}"
+echo "Keys for my_associative_array:" 
+for key in "${!my_associative_array[@]}"; do
+    echo "$key"
+done
+echo "Values for my_associative_array:"
+for value in "${my_associative_array[@]}"; do
+    echo "$value"
+done
+echo "Key Value Pairs from For Loop:"
+for key in "${!my_associative_array[@]}"; do
+    echo "Key: $key  |  Value: ${my_associative_array[$key]}"
+done

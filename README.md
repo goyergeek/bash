@@ -1,10 +1,13 @@
 # WTC ITSC-1458: Linux Installation and Configuration BASH scripts
 **This is a repo for the ITSC-1458 Linux Installation and Configuration classes.**
-## How to clone this repo
+## How to clone this repo and initialize for use
 * On any Linux VM Instance, open a terminal and navigate to your home folder.
-* Create the following folder within the home folder: **_/scripts_**
+* Create the following folder within the home folder: **_~/scripts_**
 * Navigate to **_~/scripts_** and run the command: **_user@server:~/scripts$ git clone https://github.com/goyergeek/bash.git_**
-* Repo should now be cloned to **_~/scripts/bash_**
+* Repo should now be cloned, navigate to **_~/scripts/bash_**, and make sure all files are present.
+* run **_chmod ug+x ~/scripts/bash/init.sh_**
+* run **_~/scripts/bash/init.sh_**
+* validate that all .sh files in **_~/scripts/bash_** now have executable flag set in permissions.
 
 ## Shell script files and descriptions
 * **filegen.sh**: Generates a folder structure and 1,000 files in the current users home directory.

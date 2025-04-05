@@ -1,7 +1,5 @@
 #!/bin/bash
 
 # This script is meant to be run after pulling from github.
-# It will simply set the executable permission for user and
-# group of the script files for the current user.  
-
+# It will set up the script directory and file structures.
 find ~/scripts/ -name "*.sh" -type f -print0 | xargs -0 chmod ug+x

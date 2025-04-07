@@ -166,7 +166,9 @@ echo "-----Until Loop"
 echo ;
 echo -n "Indexes and Values: "
 idxcounter=0
-until [ $idxcounter -ge ${#my_indexed_array[@]}-1 ]; do
+arrlen=${#my_indexed_array[@]}
+arrlen=$((arrlen-1))
+until [ $idxcounter -ge $arrlen ]; do
     echo -n "$idxcounter:${my_indexed_array[$idxcounter]}"
     idxcounter=$((idxcounter+1))
 done
@@ -177,7 +179,9 @@ echo "-----While Loop"
 echo ;
 echo -n "Indexes and Values:"
 idxcounter=0
-while [ $idxcounter -le ${#my_indexed_array[@]}-1 ]; do
+arrlen=${#my_indexed_array[@]}
+arrlen=$((arrlen-1))
+while [ $idxcounter -le $arrlen ]; do
     echo -n "$idxcounter:${my_indexed_array[$idxcounter]}"
     idxcounter=$((idxcounter+1))
 done

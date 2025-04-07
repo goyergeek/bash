@@ -152,74 +152,78 @@ echo "Value for Key FirstName (\${my_associative_array[\"FirstName\"]}): ${my_as
 echo "Value for Key LastName (\${my_associative_array[\"LastName\"]}): ${my_associative_array["LastName"]}"
 
 echo "#################### Looping over Indexed and Associative Arrays ####################"
-echo ;
 echo "----------Looping Indexed Arrays"
+echo "-----For Loop"
 echo ;
-echo "-----Indexed For Loop"
-echo -n "Loop Output: "
+echo -n "Indexes and Values: "
+
 for index in "${!my_indexed_array[@]}"; do
-    echo -n "$index: ${my_indexed_array[$index]}, "
-done
-echo ; echo;
-echo "-----Associative For Loops"
-echo -n "Keys Loop Output: " 
-for key in "${!my_associative_array[@]}"; do
-    echo -n "$key"
+    echo -n "$index:${my_indexed_array[$index]} "
 done
 
+echo ; echo ;
+echo "-----Until Loop"
 echo ;
-echo "Values for my_associative_array:"
-
-for value in "${my_associative_array[@]}"; do
-    echo "$value"
-done
-
-echo ;
-echo "Key Value Pairs from For Loop:"
-echo "#################### Associative For Loop ####################"
-
-for key in "${!my_associative_array[@]}"; do
-    echo "Key: $key  |  Value: ${my_associative_array[$key]}"
-done
-
-# Indexed Arrays with While and Until Loops
-echo "#################### Indexed While and Until Loops ####################"
-echo ;
-echo "----------Indexed While Loop"
-idxcounter=0
-while [ $idxcounter -le ${#my_indexed_array[@]}-1 ]; do
-    echo "Index: $idxcounter, Value: ${my_indexed_array[$idxcounter]}"
-    idxcounter=$((idxcounter+1))
-done
-echo ;
-echo "----------Indexed Until Loop"
+echo -n "Indexes and Values: "
 idxcounter=0
 until [ $idxcounter -ge ${#my_indexed_array[@]}-1 ]; do
-    echo "Index: $idxcounter, Value: ${my_indexed_array[$idxcounter]}"
+    echo -n "$idxcounter:${my_indexed_array[$idxcounter]}"
     idxcounter=$((idxcounter+1))
 done
-echo ;
 
 
-# Associative Arrays with While and Until Loops
-echo "#################### Associative While and Until Loops ####################"
+echo ; echo;
+echo "-----While Loop"
 echo ;
-echo "----------Associative Until Loop"
+echo -n "Indexes and Values:"
+idxcounter=0
+while [ $idxcounter -le ${#my_indexed_array[@]}-1 ]; do
+    echo -n "$idxcounter:${my_indexed_array[$idxcounter]}"
+    idxcounter=$((idxcounter+1))
+done
+
+echo ; echo;
+echo "----------Looping Associative Arrays"
+echo "-----For Loops"
+echo ;
+echo -n "Keys: " 
+
+for key in "${!my_associative_array[@]}"; do
+    echo -n "$key "
+done
+
+echo ;
+echo -n "Values: "
+
+for value in "${my_associative_array[@]}"; do
+    echo -n "$value "
+done
+
+echo ;
+echo -n "Key Value Pairs: "
+
+for key in "${!my_associative_array[@]}"; do
+    echo -n "$key:${my_associative_array[$key]}"
+done
+echo ; echo ;
+
+echo "---------Until Loop"
+echo ;
 keycounter=0
 keys=("${!my_associative_array[@]}")
 until [ $keycounter -ge ${#keys[@]}-1 ]; do
     currentkey=${keys[$keycounter]}
-    echo "Key: $currentkey, Value: ${my_associative_array[$currentkey]}"
+    echo "$currentkey:${my_associative_array[$currentkey]}"
     keycounter=$((keycounter+1))
 done
 
-echo ;
-echo "----------Associative While Loop"
+echo ; echo ;
+echo "---------While Loop"
 keycounter=0
 keys=("${!my_associative_array[@]}")
 while [ $keycounter -le ${#keys[@]}-1 ]; do
     currentkey=${keys[$keycounter]}
-    echo "Key: $currentkey, Value: ${my_associative_array[$currentkey]}"
+    echo "$currentkey:${my_associative_array[$currentkey]}"
     keycounter=$((keycounter+1))
 done
 

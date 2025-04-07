@@ -169,7 +169,7 @@ idxcounter=0
 arrlen=${#my_indexed_array[@]}
 arrlen=$((arrlen-1))
 until [ $idxcounter -ge $arrlen ]; do
-    echo -n "$idxcounter:${my_indexed_array[$idxcounter]}"
+    echo -n "$idxcounter:${my_indexed_array[$idxcounter]} "
     idxcounter=$((idxcounter+1))
 done
 
@@ -182,7 +182,7 @@ idxcounter=0
 arrlen=${#my_indexed_array[@]}
 arrlen=$((arrlen-1))
 while [ $idxcounter -le $arrlen ]; do
-    echo -n "$idxcounter:${my_indexed_array[$idxcounter]}"
+    echo -n "$idxcounter:${my_indexed_array[$idxcounter]} "
     idxcounter=$((idxcounter+1))
 done
 
@@ -192,14 +192,14 @@ echo "-----For Loops"
 echo ;
 echo -n "Keys: " 
 
-for key in "${!my_associative_array[@]}"; do
+for key in "${!my_associative_array[@]} "; do
     echo -n "$key "
 done
 
 echo ;
 echo -n "Values: "
 
-for value in "${my_associative_array[@]}"; do
+for value in "${my_associative_array[@]} "; do
     echo -n "$value "
 done
 
@@ -207,6 +207,6 @@ echo ;
 echo -n "Key Value Pairs: "
 
 for key in "${!my_associative_array[@]}"; do
-    echo -n "$key:${my_associative_array[$key]}"
+    echo -n "$key:${my_associative_array[$key]} "
 done
 echo ; echo ;

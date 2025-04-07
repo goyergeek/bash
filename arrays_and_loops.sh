@@ -210,25 +210,3 @@ for key in "${!my_associative_array[@]}"; do
     echo -n "$key:${my_associative_array[$key]}"
 done
 echo ; echo ;
-
-echo "---------Until Loop"
-echo ;
-keycounter=0
-keys=("${!my_associative_array[@]}")
-until [ $keycounter -ge ${#keys[@]}-1 ]; do
-    currentkey=${keys[$keycounter]}
-    echo "$currentkey:${my_associative_array[$currentkey]}"
-    keycounter=$((keycounter+1))
-done
-
-echo ; echo ;
-echo "---------While Loop"
-keycounter=0
-keys=("${!my_associative_array[@]}")
-while [ $keycounter -le ${#keys[@]}-1 ]; do
-    currentkey=${keys[$keycounter]}
-    echo "$currentkey:${my_associative_array[$currentkey]}"
-    keycounter=$((keycounter+1))
-done
-
-

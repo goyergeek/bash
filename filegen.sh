@@ -17,7 +17,8 @@ directories=("$dirRoot/files/01" "$dirRoot/files/02" "$dirRoot/files/03" "$dirRo
 # prepend a date and time to all redirected output when called.
 add_timestamp() {
     while IFS= read -r line; do
-        printf "%(%Y-%m-%d %H:%M:%S.%N | )T %s\n" -1 "$line"
+        timestamp=$(date "+%Y-%m-%d %H:%M:%S.%3N |")
+        printf "%s %s" "${timestamp}" "$line" 
     done
 }
 
@@ -35,7 +36,7 @@ done
 # are empty.  
 for i in {1..1000}; do
     filedate=$(date +"%m%d%Y")
-    touch "$dirRoot/files/01/${filedate}_file#_$i.txt"
+    touch "$dirRoot/files/01/${filedate}_EMPTY_$i.txt"
 done
 
 # A for loop to create a file for every number in the range
@@ -44,7 +45,7 @@ done
 # populated with 150kb of random alphanumeric text. 
 for i in {1..1000}; do
     filedate=$(date +%m%d%Y)
-    tr -dc A-Za-z0-9\\n </dev/urandom | head -c 150000 > "$dirRoot/files/02/${filedate}_file#_$i.txt"
+    tr -dc A-Za-z0-9\\n </dev/urandom | head -c 150000 > "$dirRoot/files/02/${filedate}_RANDOM_$i.txt"
 done
 
 
@@ -60,12 +61,12 @@ while [ $counter -lt 100 ]; do
 
     # Find only files in /files or /files2 and move them verbosely 
     # to the opposite folder.
-    find "$dirRoot/files/01/" -type f -print0 |  xargs -0 mv -vt "$dirRoot/files/temp" | add_timestamp 1>>"$dirRoot/output/init_stdout.log" 2>&1 | add_timestamp "$dirRoot/output/init_stderr.log"
-    find "$dirRoot/files/temp/" -type f -print0 | xargs -0 mv -vt "$dirRoot/files/01" | add_timestamp 1>>"$dirRoot/output/init_stdout.log" 2>&1 | add_timestamp "$dirRoot/output/init_stderr.log"
+    find "$dirRoot/files/01/" -type f -print0 |  xargs -0 mv -vt "$dirRoot/files/temp" | add_timestamp &>>"$dirRoot/output/init.log"
+    find "$dirRoot/files/temp/" -type f -print0 | xargs -0 mv -vt "$dirRoot/files/01" | add_timestamp &>>"$dirRoot/output/init.log"
     
     # Copy Non-existent files verbosely to generate stderr output.  
     # There shouldn't be any stdout output.  
-    cp -v "$dirRoot/files/temp$counter/anyfile$counter.txt" "$dirRoot/files" | add_timestamp 1>>"$dirRoot/output/init_stdout.log" 2>&1 | add_timestamp "$dirRoot/output/init_stderr.log"
+    cp -v "$dirRoot/files/temp$counter/anyfile$counter.txt" "$dirRoot/files" | add_timestamp &>>"$dirRoot/output/init.log"
 
     # Increment the counter variable by 1, so the while condition 
     # eventually evaluates to false.
@@ -75,4 +76,4 @@ done
 # List contents of the files folder with human readable file sizes 
 # to ensure files are back where they belong, and redirect stdout
 # and stderr streams to files.
-ls -lhR "$dirRoot/files/" | add_timestamp 1>>"$dirRoot/output/init_files_folders.log" 2>&1 | add_timestamp "$dirRoot/output/inti_files_errors.log"
+ls -lhR "$dirRoot/files/" | add_timestamp &>>"$dirRoot/output/init_files_list.txt"

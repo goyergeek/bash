@@ -25,7 +25,7 @@ add_timestamp() {
 # and see if the folder exists then create it if not.
 for dir in "${directories[@]}"; do
     if [ ! -d "$dir" ]; then
-        mkdir "$dir"
+        mkdir -p "$dir"
     fi
 done
 

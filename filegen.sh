@@ -17,7 +17,7 @@ directories=("$dirRoot/files/01" "$dirRoot/files/02" "$dirRoot/files/03" "$dirRo
 # prepend a date and time to all redirected output when called.
 add_timestamp() {
     while IFS= read -r line; do
-        printf "%(%Y-%m-%d %H:%M:%S.%3N | )T %s\n" -1 "$line"
+        printf "%(%Y-%m-%d %H:%M:%S.%N | )T %s\n" -1 "$line"
     done
 }
 

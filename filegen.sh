@@ -18,7 +18,7 @@ directories=("$dirRoot/files/01" "$dirRoot/files/02" "$dirRoot/files/03" "$dirRo
 add_timestamp() {
     while IFS= read -r line; do
         timestamp=$(date "+%Y-%m-%d %H:%M:%S.%3N |")
-        printf "%s %s" "${timestamp}" "$line" 
+        printf "%s %s\n" "${timestamp}" "$line" 
     done
 }
 

@@ -11,7 +11,7 @@
 # Instantiate an indexed array called directories and populate it
 # directories.
 dirRoot="$HOME/scripts/bash"
-directories=("$dirRoot/files/01" "$dirRoot/files/02" "$dirRoot/files/03" "$dirRoot/files/temp")
+directories=("$dirRoot/files/01" "$dirRoot/files/02" "$dirRoot/files/03" "$dirRoot/files/temp" "$dirRoot/output")
 
 # Instantiate a function called add_timestamp() which will
 # prepend a date and time to all redirected output when called.

@@ -23,9 +23,9 @@ add_timestamp() {
 
 # A for loop to iterate through the directories array
 # and see if the folder exists then create it if not.
-for dir in "${directories[@]}"; do
-    if [ ! -d "$dir" ]; then
-        mkdir -p "$dir"
+for dirs in "${directories[@]}"; do
+    if [ ! -d "$dirs" ]; then
+        mkdir -p "$dirs"
     fi
 done
 
@@ -43,7 +43,7 @@ done
 # year, as well as the file number.  These files will be 
 # populated with 150kb of random alphanumeric text. 
 for i in {1..1000}; do
-    filedate=$(date + %m%d%Y)
+    filedate=$(date +%m%d%Y)
     tr -dc A-Za-z0-9\\n </dev/urandom | head -c 150000> "$dirRoot/files/02/${filedate}_file#_$i.txt"
 done
 

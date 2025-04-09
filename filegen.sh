@@ -44,7 +44,7 @@ done
 # populated with 150kb of random alphanumeric text. 
 for i in {1..1000}; do
     filedate=$(date +%m%d%Y)
-    tr -dc A-Za-z0-9\\n </dev/urandom | head -c 150000> "$dirRoot/files/02/${filedate}_file#_$i.txt"
+    tr -dc A-Za-z0-9\\n </dev/urandom | head -c 150000 > "$dirRoot/files/02/${filedate}_file#_$i.txt"
 done
 
 

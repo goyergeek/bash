@@ -61,12 +61,12 @@ while [ $counter -lt 100 ]; do
 
     # Find only files in /files or /files2 and move them verbosely 
     # to the opposite folder.
-    find "$dirRoot/files/01/" -type f -print0 |  xargs -0 mv -vt "$dirRoot/files/temp" | add_timestamp &>>"$dirRoot/output/init.log"
+    find "$dirRoot/files/01/" -type f -print0 | xargs -0 mv -vt "$dirRoot/files/temp" | add_timestamp &>>"$dirRoot/output/init.log"
     find "$dirRoot/files/temp/" -type f -print0 | xargs -0 mv -vt "$dirRoot/files/01" | add_timestamp &>>"$dirRoot/output/init.log"
     
     # Copy Non-existent files verbosely to generate stderr output.  
     # There shouldn't be any stdout output.  
-    cp -v "$dirRoot/files/temp$counter/anyfile$counter.txt" "$dirRoot/files" | add_timestamp &>>"$dirRoot/output/init.log"
+    cp -v "$dirRoot/files/temp$counter/anyfile$counter.txt" "$dirRoot/files" 2>&1 | add_timestamp >>"$dirRoot/output/init.log"
 
     # Increment the counter variable by 1, so the while condition 
     # eventually evaluates to false.

@@ -12,4 +12,4 @@
 
 ## Shell script files and descriptions
 * **arrays_and_loops.sh**: Examples of indexed and associative arrays, while for and until loops.
-* * Running this script will output examples of loops and arrays to the screen.
+  * Running this script will output examples of loops and arrays to the screen.

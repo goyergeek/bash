@@ -220,7 +220,6 @@ done
 echo ; echo ;
 
 echo "----------While Loop"
-
 keycounter=0
 arrlen=${#my_associative_array[@]}
 arrlen=$((arrlen-1))

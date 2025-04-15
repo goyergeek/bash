@@ -43,8 +43,8 @@ done
 for i in {1..100}; do
     filedate=$(date +%m%d%Y)
     tr -dc A-Za-z0-9\\n </dev/urandom | head -c 150000 > "$dirRoot/files/02/${filedate}_RANDOM_$i.txt"
-    wc --lines --chars --bytes "$dirRoot/files/02/${filedate}_RANDOM_$i.txt" >>"$dirRoot/output/RANDOM_Analysis_$i.txt"
-    cat "$dirRoot/files/02/${filedate}_RANDOM_$i.txt" | grep -o '.' |sort |uniq -c >>"$dirRoot/output/RANDOM_Analysis_$i.txt"
+    wc --lines --chars --bytes "$dirRoot/files/02/${filedate}_RANDOM_$i.txt" | add_timestamp >>"$dirRoot/output/RANDOM_File_Analysis.txt"
+    cat "$dirRoot/files/02/${filedate}_RANDOM_$i.txt" | grep -o '.' |sort |uniq -c | add_timestamp >>"$dirRoot/output/RANDOM_File_Analysis.txt"
 done
 
 # Instantiate a variable called counter and set it to zero.  This

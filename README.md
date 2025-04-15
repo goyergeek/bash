@@ -8,10 +8,8 @@
 * run **_chmod ug+x ~/scripts/bash/init.sh_**
 * run **_~/scripts/bash/init.sh_**
 * validate that all .sh files in **_~/scripts/bash_** now have executable flag set in permissions.
+* validate that test files have been generated in **_~/scripts/bash/files/01-03_** (100 each in files/01 files/02, and 50 in files/03)
 
 ## Shell script files and descriptions
-* **filegen.sh**: Generates a folder structure and 1,000 files in the current users home directory.
-  * Creates folders **_/files_**, **_/files2_**, **_/templogs_**
-  * Generates 1,000 files in /files folder with following name format: **_[mmddYYY]\_file#\_[file number]_**
-  * Moves files in **_/files_** to **_/files2_** and redirects stdout and stderr to files in **_/templogs_**
-  * Attempts to copy a file that does not exist to generate errors for stderr redirects
+* **arrays_and_loops.sh**: Examples of indexed and associative arrays, while for and until loops.
+* * Running this script will output examples of loops and arrays to the screen.

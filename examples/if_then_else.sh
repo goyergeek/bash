@@ -28,7 +28,7 @@
 # else
 #   Code to execute if condition1 and condition2 are both false
 
-# Conditions are often expresses using coparison operators.  Common
+# Conditions are often expressed using comparison operators.  Common
 # comparison operators in BASH are:
 # -eq :  equal
 # -ne :  not equal
@@ -38,7 +38,7 @@
 # -ge :  greater than or equal to
 # -z  :  empty string
 # -n  :  not empty string
-# ==  :  string equality
+# =   :  string equality
 # !=  :  string inequality
 # -f  :  file exists
 # -d  :  directory exists
@@ -86,14 +86,14 @@ fi
 echo; echo;
 
 # If Name is Alice and age is 25
-if [[ $name == "Alice" ]] && [ $age -eq 25 ]; then
+if [[ $name = "Alice" ]] && [ $age -eq 25 ]; then
   echo "Name is Alice and age is 25"
 fi
 
 echo; echo;
 
 # If Name is Allen, Else If Age is 25, else....
-if [ $name == "Allen" ]; then
+if [ $name = "Allen" ]; then
     echo "Name is Allen"
 elif [ $age -eq 25 ]; then
     echo "Ager is 25"

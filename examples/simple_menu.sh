@@ -45,7 +45,8 @@ while [ $quitbit -eq 1 ]; do
             lsblk | less
             ;;
         5)
-            echo command
+            clear
+            lshw -C network | less 
             ;;
         6)
             printf "\n\t The menu will now exit.\n\t Press Enter to continue..."; read -p ""
@@ -55,6 +56,5 @@ while [ $quitbit -eq 1 ]; do
         *)
             printf "\n\t Invalid option, please enter an valid menu option (1-6)\n\t Press Enter to continue..."; read -p ""
             ;;
-    esac
-        
+    esac     
 done

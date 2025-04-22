@@ -96,9 +96,15 @@ check_day() {
         Friday)
             echo "Today is Friday! The weekend starts tomorrow!"
             ;;
-        (!(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday))
-            echo "The string did not end in day, and was not a valid day"
-            echo "Please use a valid day name (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)."
+        *)
+            if [[ "$1" = "Monday" || "$1" = "Tuesday" || "$1" = "Wednesday" || "$1" = "Thursday" || "$1" = "Friday" || "$1" = "Saturday" || "$1" = "Sunday" ]]; then
+                return 0
+            else
+                echo "The string did not end in day, and\or was not a valid day name"
+                echo "Please use a valid day name (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)."
+                return 1
+            fi
+            
             ;;
     esac
 }
@@ -110,4 +116,4 @@ check_day "Monday"      # Output: The string ends in day; The string is a valid 
 check_day "Tuesday"     # Output: The string ends in day; The string is a valid day; The string is a weekday
 check_day "Friday"      # Output: The string ends in day; The string is a valid day; The String is a weekday; Today is Friday! The weekend starts tomorrow!
 check_day "Saturday"    # Output: The string ends in day; The string is a valid day; The string is a weekend
-check_day "Thursding"   # Output: The string did not end in day, and was not a valid day; Please use a valid day name (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday). 
+check_day "Thursding"   # Output: The string did not end in day, and\or was not a valid day; Please use a valid day name (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday).

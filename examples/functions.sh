@@ -100,9 +100,6 @@ check_day() {
             echo "The string did not end in day, and was not a valid day"
             echo "Please use a valid day name (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)."
             ;;
-        *)
-            echo "Not sure how you ended up here"
-            ;;
     esac
 }
 

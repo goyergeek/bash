@@ -62,13 +62,20 @@ name="Alice"
 age=25
 file="my_file.txt"
 
+echo "Name = $name"
+echo "Age = $age"
+echo "File = $file"
+echo;
+
 # If $name is not an empty string.
+echo "if [[ -n \"\$name\" ]]"
 if [[ -n "$name" ]]; then
   echo "Name is not empty: $name"
 fi
 echo; echo;
 
 # If age is greater than 18, else.
+echo "if [ \$age -ge 18 ]"
 if [ $age -ge 18 ]; then
   echo "$name is an adult"
 else
@@ -77,6 +84,7 @@ fi
 echo; echo;
 
 # If File exists, else.
+echo "if [ -f \"\$file\" ]"
 if [ -f "$file" ]; then
   echo "File '$file' exists"
 else
@@ -86,17 +94,19 @@ fi
 echo; echo;
 
 # If Name is Alice and age is 25
+echo "If [ \$name = \"Alice\" ] && [ \$age -eq 25 ]"
 if [[ $name = "Alice" ]] && [ $age -eq 25 ]; then
   echo "Name is Alice and age is 25"
 fi
 
 echo; echo;
 
-# If Name is Allen, Else If Age is 25, else....
+# If Name is Allen, Else If Age is 26, else....
+echo "If [ \$name = \"Allen\" ], elif [ age = 26 ], else echo"
 if [ $name = "Allen" ]; then
     echo "Name is Allen"
-elif [ $age -eq 25 ]; then
-    echo "Ager is 25"
+elif [ $age -eq 26 ]; then
+    echo "Age is 25"
 else
     echo "Name is not Allen and Age is not 25"
-fi
+fi 

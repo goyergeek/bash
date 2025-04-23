@@ -84,6 +84,7 @@ esac
 
 my_string="Friday"
 
+printf "\n%s\n" "check_day \"Friday\"  Output:" 
 case "$my_string" in
     *"day")
         echo "The string ends in day"

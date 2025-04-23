@@ -8,4 +8,4 @@ echo -e "First Name :: \c"; read -r firstname
 echo -e "Last Name  :: \c"; read -r lastname
 echo -e "Age        :: \c"; read -r age
 
-printf "Your name is %s %s, and you are %d years old!" "$firstname" "$lastname" "$age"
+printf "\nYour name is %s %s, and you are %d years old!\n" "$firstname" "$lastname" "$age"

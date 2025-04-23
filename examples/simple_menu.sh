@@ -2,7 +2,7 @@
 
 # This example shows how to construct a simple menu using the concepts
 # explained in the examples for the read, input, if, then,
-# else, elif, arrays and loops, and case constructs.
+# else, elif, arrays and loops, and case constructs
 
 # Clear the Screen
 clear

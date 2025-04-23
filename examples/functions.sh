@@ -109,11 +109,18 @@ check_day() {
     esac
 }
 
+printf "%s\n" "check_file '/madeupdirectory/nope.txt' Output:"
 check_file '/madeupdirectory/nope.txt'     # Output: "File ~/madupdirectory/nope.txt does not exist."
+printf "\n%s\n" "check_file '/bin/bash' Output:"
 check_file '/bin/bash'                     # Output: "File /bin/bash exists!"
-
+printf "\n%s\n" "check_day \"Monday\"  Output:" 
 check_day "Monday"      # Output: The string ends in day; The string is a valid day; The string is a weekday
+printf "\n%s\n" "check_day \"Tuesday\"  Output:" 
 check_day "Tuesday"     # Output: The string ends in day; The string is a valid day; The string is a weekday
+printf "\n%s\n" "check_day \"Friday\"  Output:" 
 check_day "Friday"      # Output: The string ends in day; The string is a valid day; The String is a weekday; Today is Friday! The weekend starts tomorrow!
+printf "\n%s\n" "check_day \"Saturday\"  Output:" 
 check_day "Saturday"    # Output: The string ends in day; The string is a valid day; The string is a weekend
+printf "\n%s\n" "check_day \"Thursding\"  Output:" 
 check_day "Thursding"   # Output: The string did not end in day, and\or was not a valid day; Please use a valid day name (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday).
+printf "\n"

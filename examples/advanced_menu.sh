@@ -10,12 +10,16 @@
 . menus.sh
 
 # display_menu() does exactly that. It takes menu data provided in menus.sh and uses it to display a nicely formatted 
-# menu to the screen along with a prompt.
+# menu to the screen along with a prompt.  The character used to draw the menu can be altered by changing the value
+# of $ch. $ch is ░ ($'\u2591') by default, and is declared at the start of the function.  display_menu() can handle
+# up to 99 options, at which point formatting of the numbers will break down, as there is not enough padding for 3
+# digits.  The function will allow you to pass an array with more than 99 options, but it will not display correctly. 
 display_menu() {
     clear
     local ch=$(echo $'\u2591')
     local -n arr_ref=$1
     local col_count=1
+    local menu_cap=$(printf "\t";printf "$ch%.0s" {1..91})
     local menu_space=("\t$ch%-89s$ch\n" "")
     local menu_name=("\t$ch%-37s%-15s%-37s$ch\n" "" "${arr_ref[Name]}" "")
     local menu_prompt=("\t$ch  %s :: " "Select an Option")
@@ -23,15 +27,15 @@ display_menu() {
     local sorted_keys=($(printf "%s\n" "${!arr_ref[@]}" | sort))
     unset 'sorted_keys[-1]'
     local sorted_keys=($(printf "%s\n" "${sorted_keys[@]}" | sort -n))
-    local opts=${#sorted_keys[@]}
     local opts_count=1
-    printf "\n\n\n\t"
-    printf "$ch%.0s" {1..91};printf "\n"
+    printf "\n\n\n"
+    printf "${menu_cap[@]}";printf "\n"
     printf "${menu_space[@]}" 
     printf "${menu_name[@]}"
     printf "${menu_space[@]}" 
-    printf "\t";printf "$ch%.0s" {1..91};printf "\n"
-    printf "${menu_space[@]}" 
+    printf "${menu_cap[@]}";printf "\n"
+    printf "${menu_space[@]}"
+
     for idx in "${!sorted_keys[@]}"; do
         local idxVal=${sorted_keys[$idx]}
         local opts_line+=("${sorted_keys[$idx]}." "${arr_ref[$idxVal]}")
@@ -52,11 +56,14 @@ display_menu() {
             local col_count=$((col_count + 1))
         fi
     done
-    printf "\t";printf "$ch%.0s" {1..91};printf "\n\n"
+
+    printf "${menu_cap[@]}";printf "\n\n"
     printf "${menu_prompt[@]}"
 } # End Of Function display_menu()
 
-
+# generate_case() takes the users menu selection and data from the opts array for the menu you are currently viewing 
+# then uses it to generate and immediately evaluate a case statement. Dynamically generating the case statements like
+# this allows us to generate an arbitrary number of options and relevant commands for execution.  
 generate_case() {
     local -n opts_ref=$1
     local cases=("${!opts_ref[@]}")
@@ -68,7 +75,10 @@ generate_case() {
     echo "esac"
 } # End Of Function generate_case()
 
-
+# run_menu() runs display_menu() and generate_case() on a loop.  Until the user exits the menu, or uses ctrl-c
+# to interrupt processing, it will continue to run.  This function first runs display_menu() for main_menu,
+# then reads input as $selection.  Then generates and evaluates the command for that option, before looping
+# back to display the menu again.  
 run_menu() {
     quitbit=1
     current="main_"
@@ -81,4 +91,5 @@ run_menu() {
     done
 } # End of Function: handle_options()
 
+# Actually execute the run_menu() function, so the script is executable as is.
 run_menu

@@ -38,7 +38,7 @@ declare -A disk_opts=(
     [1]='ls -lha --color=always /dev | less -r'
     [2]='lsblk -lpf | less'
     [3]='echo "Not A Chance. HA!"'
-    [4]='printf "%s\n%s\n\n%s\n%s\n\n" "******** File System Usage ********" "$(df -h)" "******** Inode Usage ********" "$(df -hi)" | less'
+    [4]="printf \"%s\n%s\n\n%s\n%s\n\n\" \"******** File System Usage ********\" \"$(df -h)\" \"******** Inode Usage ********\" \"$(df -hi)\" | less"
     [5]='echo "Nope, Not here either bub."'
     [6]="current=\"main_\""
 )

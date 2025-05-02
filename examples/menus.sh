@@ -37,9 +37,9 @@ declare -A disk_menu=(
 declare -A disk_opts=(
     [1]='ls -lha --color=always /dev | less -r'
     [2]='lsblk -lpf | less'
-    [3]='echo "Not A Chance. HA!"'
-    [4]="fs1=$(df -h);fs2=$(df -hi);echo -e \"******** Filesystem Space Usage ********\n$fs1\n\n******** Filesystem Inode Usage ********\n$fs2\n\" | less"
-    [5]='echo "Nope, Not here either bub."'
+    [3]='echo "Not A Chance. HA!";sleep 10'
+    [4]='fs1=$(df -h);fs2=$(df -hi);echo -e "******** Filesystem Space Usage ********\n$fs1\n\n******** Filesystem Inode Usage ********\n$fs2\n" | less'
+    [5]='echo "Nope, Not here either bub.";sleep 10'
     [6]="current=\"main_\""
 )
 

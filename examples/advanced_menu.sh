@@ -80,3 +80,5 @@ run_menu() {
         eval "$command"
     done
 } # End of Function: handle_options()
+
+run_menu

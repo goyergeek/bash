@@ -23,7 +23,7 @@
 #
 # if [ condition1 ]; then
 #   Code to execute if condition1 is true
-# elif [ condition2]; then
+# elif [ condition2 ]; then
 #   Code to execute if condition1 is false and condition2 is true
 # else
 #   Code to execute if condition1 and condition2 are both false
@@ -105,7 +105,7 @@ echo; echo;
 echo "If [ \$name = \"Allen\" ], elif [ age = 26 ], else echo"
 if [ $name = "Allen" ]; then
     echo "Name is Allen"
-elif [ $age -eq 26 ]; then
+elif [ $age -eq 25 ]; then
     echo "Age is 25"
 else
     echo "Name is not Allen and Age is not 25"

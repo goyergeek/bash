@@ -71,7 +71,7 @@
 #
 # Until Loops: The until loop executes a block of code as long as a condition
 # is false.  It is important to ensure that something causes the condition to
-# evaluate as false evantually, or the loop will run infinitely.
+# evaluate as true evantually, or the loop will run infinitely.
 #
 # # Declaring Loops #
 #   

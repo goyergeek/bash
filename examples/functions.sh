@@ -40,7 +40,7 @@
 # are considered to have 'global' scope. A variable in local scope
 # is removed from memory when the function call closes.  
 # A full explanation of scope as it relates to scripting and 
-# programming is more a much more advanced topic this tutorial 
+# programming is a much more advanced topic than this tutorial 
 # is designed to provide.
 #
 # function my_function {
@@ -56,7 +56,7 @@
 # Functions can return values using return.  The return value is
 # limited to an integer between 0 and 255. This is unlike other 
 # languages which will let your return almost any data structure
-# such as an array, string, or even another fucntion.  
+# such as an array, string, or even another function.  
 # With Bash, return is essentially the same as an exit status  
 # of the function.  
 #
